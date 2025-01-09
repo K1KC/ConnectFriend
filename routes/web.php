@@ -1,7 +1,14 @@
 <?php
 
+use App\Http\Controllers\LocaleController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+Route::middleware(['auth'])->group(function() {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);    
 });
+
+
+
