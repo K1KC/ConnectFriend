@@ -28,22 +28,26 @@ class HomeController extends Controller
     {
         $currentUserId = auth()->user()->id;
 
-        $users = User::where('id', '!=', $currentUserId)
-        ->whereNotIn('id', function($query) use ($currentUserId) {
-            $query->select('friend_id')
-                  ->from('friends')
-                  ->where('user_id', $currentUserId)
-                  ->unionAll(
-                      $query->select('user_id')
-                            ->from('friends')
-                            ->where('friend_id', $currentUserId)
-                  );
-        })
-        ->with('fieldsOfWork')->inRandomOrder()
-        ->get();
+        // Take both ways friend relation of user (not used)
+        // $users = User::where('id', '!=', $currentUserId)
+        // ->whereNotIn('id', function($query) use ($currentUserId) {
+        //     $query->select('friend_id')
+        //           ->from('friends')
+        //           ->where('user_id', $currentUserId)
+        //           ->unionAll(
+        //               $query->select('user_id')
+        //                     ->from('friends')
+        //                     ->where('friend_id', $currentUserId)
+        //           );
+        // })
+        // ->with('fieldsOfWork')->inRandomOrder()
+        // ->get();
 
-        $wishlist = Friend::where('user_id', $currentUserId)->pluck('friend_id')->toArray();
+        /* Take user_id with status as base */
+        $users = User::where('id', $currentUserId)->with('fieldsOfWork')->inRandomOrder()->get();
 
-    return view('home', compact('users', 'wishlist'));
+        $wishlist = Friend::where('user_id', $currentUserId)->where('status', 'pending')->pluck('friend_id')->toArray();
+
+        return view('home', compact('users', 'wishlist'));
     }
 }
