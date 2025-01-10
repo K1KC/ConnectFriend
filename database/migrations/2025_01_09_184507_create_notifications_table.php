@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('sender_id')->constrained('users');
             $table->enum('type', ['friend_request', 'incoming_message']);
             $table->text('message');
             $table->enum('status', ['unread', 'read']);

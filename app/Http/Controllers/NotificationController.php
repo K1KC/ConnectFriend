@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Notification;
+use Illuminate\Http\Request;
+
+class NotificationController extends Controller
+{
+    public function getAllNotifications() {
+        $currentUserId = auth()->user()->id;
+        $notifications = Notification::where('user_id', $currentUserId)->with('sender')->orderBy('created_at', 'ASC')->get();
+
+        return view('notification', compact('notifications'));
+    }
+}

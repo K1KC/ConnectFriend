@@ -4,6 +4,8 @@ return [
     // Navbar
     'Home' => 'Home',
     'Profile' => 'Profile',
+    'Notification' => 'Notification',
+    'Message' => 'Message',
     'Logout' => 'Logout',
 
     // Login Page

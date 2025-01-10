@@ -15,13 +15,13 @@
                     <a class="nav-link active" href="/">{{__('messages.Home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile')}}">{{__('messages.Profile')}}</a>
+                    <a class="nav-link" href="{{--{{ route('profile')}}--}}">{{__('messages.Profile')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('notification')}}">{{__('messages.Notification')}}</a>
+                    <a class="nav-link" href="{{--{{ route('notification')}}--}}">{{__('messages.Notification')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('messages')}}">{{__('messages.Message')}}</a>
+                    <a class="nav-link" href="{{--{{ route('messages')}}--}}">{{__('messages.Message')}}</a>
                 </li>
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
