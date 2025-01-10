@@ -8,7 +8,7 @@
             <a href="/locale/en">EN </a>
             |
             <a href="/locale/id"> ID</a>
-        </div>
+        </div> 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
