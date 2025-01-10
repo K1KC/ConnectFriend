@@ -39,9 +39,11 @@ class HomeController extends Controller
                             ->where('friend_id', $currentUserId)
                   );
         })
-        ->with('fieldsOfWork')
+        ->with('fieldsOfWork')->inRandomOrder()
         ->get();
 
-    return view('home', compact('users'));
+        $wishlist = Friend::where('user_id', $currentUserId)->pluck('friend_id')->toArray();
+
+    return view('home', compact('users', 'wishlist'));
     }
 }

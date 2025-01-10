@@ -22,7 +22,7 @@
     
             <form action="{{ route('edit.thumbsup') }}" method="POST">
                 @csrf
-                @if(in_array($user_id, $friendlist))
+                @if(in_array($user_id, $wishlist))
                     <button type="submit" name="user_id" value="{{ $user_id }}">
                         <img class="size-5" src="{{ asset('thumbs-up-active.png') }}">
                     </button>

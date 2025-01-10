@@ -18,6 +18,12 @@
                     <a class="nav-link" href="{{ route('profile')}}">{{__('messages.Profile')}}</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('notification')}}">{{__('messages.Notification')}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('messages')}}">{{__('messages.Message')}}</a>
+                </li>
+                <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <a class="nav-link"><button type="submit">{{__('messages.Logout')}}</button></a>

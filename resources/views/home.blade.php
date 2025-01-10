@@ -12,7 +12,8 @@
                     'mobile' => $user->mobile,
                     'profile_picture' => $user->profile_picture,
                     'fieldOfWorks' => $user->fieldOfWorks,
-                    'user_id' => $user->id
+                    'user_id' => $user->id,
+                    'wishlist' => $wishlist
                 ])                
             @endforeach
 

@@ -10,5 +10,10 @@
 <body>
     @include('layouts.navbar')
     @yield('content')
+    @if (session('message'))
+        @include('layout.popup', ['message' => session('message')])
+    @elseif (session('error'))
+        @include('layout.popup', ['error' => session('error')])
+    @endif
 </body>
 </html>
