@@ -12,13 +12,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">{{__('messages.Home')}}</a>
+                    <a class="nav-link active" href="/">{{__('messages.Home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__('messages.Profile')}}</a>
+                    <a class="nav-link" href="{{ route('profile')}}">{{__('messages.Profile')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__('messages.Logout')}}</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a class="nav-link"><button type="submit">{{__('messages.Logout')}}</button></a>
+                    </form>
                 </li>
             </ul>
         </div>

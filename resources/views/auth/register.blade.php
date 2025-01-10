@@ -171,13 +171,11 @@
         const addButton = document.getElementById("add-field-btn");
         const removeButton = document.getElementById("remove-field-btn");
 
-        // Function to update the visibility of the Remove button
         const updateRemoveButton = () => {
             const inputCount = container.querySelectorAll("input").length;
             removeButton.style.display = inputCount <= 3 ? "none" : "inline-block";
         };
 
-        // Add a new input field
         addButton.addEventListener("click", () => {
             const inputCount = container.querySelectorAll("input").length + 1;
 
@@ -194,19 +192,17 @@
             newInputDiv.appendChild(newInput);
             container.appendChild(newInputDiv);
 
-            updateRemoveButton(); // Update the Remove button visibility
+            updateRemoveButton();
         });
 
-        // Remove the last input field
         removeButton.addEventListener("click", () => {
             const inputs = container.querySelectorAll("div.mb-2");
             if (inputs.length > 3) {
                 inputs[inputs.length - 1].remove();
             }
-            updateRemoveButton(); // Update the Remove button visibility
+            updateRemoveButton();
         });
 
-        // Initial update for the Remove button
         updateRemoveButton();
     });
 </script>

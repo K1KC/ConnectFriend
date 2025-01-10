@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FieldOfWork;
+use App\Models\Friend;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $currentUserId = auth()->user()->id;
+
+        $users = User::where('id', '!=', $currentUserId)
+        ->whereNotIn('id', function($query) use ($currentUserId) {
+            $query->select('friend_id')
+                  ->from('friends')
+                  ->where('user_id', $currentUserId)
+                  ->unionAll(
+                      $query->select('user_id')
+                            ->from('friends')
+                            ->where('friend_id', $currentUserId)
+                  );
+        })
+        ->with('fieldsOfWork')
+        ->get();
+
+    return view('home', compact('users'));
     }
 }
