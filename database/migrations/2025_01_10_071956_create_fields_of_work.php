@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('field_of_work', function (Blueprint $table) {
+        Schema::create('fields_of_work', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('field_of_work');
+            $table->string('field_name');
             $table->timestamps();
         });
     }

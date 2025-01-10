@@ -44,7 +44,7 @@ class HomeController extends Controller
         // ->get();
 
         /* Take user_id with status as base */
-        $users = User::where('id', $currentUserId)->with('fieldsOfWork')->inRandomOrder()->get();
+        $users = User::where('id','!=', $currentUserId)->with('fieldsOfWork')->inRandomOrder()->get();
 
         $wishlist = Friend::where('user_id', $currentUserId)->where('status', 'pending')->pluck('friend_id')->toArray();
 

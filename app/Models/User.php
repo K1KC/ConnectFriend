@@ -18,7 +18,15 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'gender',
+        'linkedin_username',
+        'mobile',
+        'profile_picture'
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -76,7 +84,7 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class, 'sender_id');
     }
 
-    public function fieldOfWorks()
+    public function fieldsOfWork()
     {
         return $this->hasMany(FieldOfWork::class);
     }

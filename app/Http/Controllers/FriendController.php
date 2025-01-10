@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use app\Models\Friend;
+use App\Models\Friend;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FriendController extends Controller
 {
@@ -32,5 +33,18 @@ class FriendController extends Controller
             ]);
             return redirect()->back()->with('message', __('messages.thumbsup.added'));
         }
+    }
+
+    public function getAllFriends() {
+        $currentUserId = auth()->user()->id;
+        $friendIds = DB::table('friends')->where(function ($query) use ($currentUserId) {
+                $query->where('user_id', $currentUserId)
+                    ->orWhere('friend_id', $currentUserId);
+        })->where('status', 'accepted')->get(['user_id', 'friend_id'])->map(function ($friendship) use ($currentUserId)
+        {
+            return $friendship->user_id === $currentUserId ? $friendship->friend_id : $friendship->user_id;
+        });
+
+        return view('friendlist', compact('friendIds'));
     }
 }

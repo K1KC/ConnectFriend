@@ -5,11 +5,21 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('messages.Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                          <!-- Name -->
                         <div class="row mb-3">
@@ -72,8 +82,8 @@
                             <div class="col-md-6">
                                 <select id="gender" class="form-select @error('gender') is-invalid @enderror" name="gender" required>
                                     <option value="" disabled selected>{{__('messages.Select your gender') }}</option>
-                                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>{{__('messages.Male')}}</option>
-                                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>{{__('messages.Female')}}</option>
+                                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>{{__('messages.Male')}}</option>
+                                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>{{__('messages.Female')}}</option>
                                 </select>
                         
                                 @error('gender')
@@ -117,7 +127,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-text">https://www.linkedin.com/in/</span>
-                                    <input id="linkedin" type="text" class="form-control @error('linkedin') is-invalid @enderror" name="linkedin" value="{{ old('linkedin') }}" required>
+                                    <input id="linkedin" type="text" class="form-control @error('linkedin') is-invalid @enderror" name="linkedin_username" value="{{ old('linkedin') }}" required>
                                 </div>
                                 @error('linkedin')
                                     <span class="invalid-feedback" role="alert">
@@ -131,7 +141,7 @@
                         <div class="mb-3 row">
                             <label for="mobile" class="col-md-4 col-form-label text-md-end">{{ __('messages.Mobile Number') }}</label>
                             <div class="col-md-6">
-                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" pattern="\\d+" placeholder="Enter all digits" required>
+                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" placeholder="(Ex. +62xxxxxxxxxxx)" required>
                                 @error('mobile')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -144,7 +154,11 @@
                         <div class="mb-3 row">
                             <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('messages.Price for Registration') }}</label>
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control" name="price" value="{{ random_int(100000, 125000) }}" readonly>
+                                <div class="input-group">
+                                    <span class="input-group-text">Rp</span>
+                                    <input id="price" type="text" class="form-control" name="price" value="{{ random_int(100000, 125000) }}" readonly>                                    
+                                </div>
+
                             </div>
                         </div>
 
@@ -156,8 +170,8 @@
                             </div>
                         </div>
                     </form>
-                    <div class="mt-3 text-center">
-                        <p class="mb-0">{{__('messages.toLogin')}}<a href="{{ route('login') }}" class="text-decoration-none fw-bold">{{__('messages.LoginHere')}}</a></p>
+                    <div class="mt-5 text-center mb-5">
+                        <p class="mb-0">{{__('messages.toLogin')}}<a href="{{ route('login') }}" class="text-decoration-none fw-bold"> {{__('messages.LoginHere')}}</a></p>
                     </div>
                 </div>
             </div>

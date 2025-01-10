@@ -9,7 +9,8 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'payments';
+    protected $guarded = [''];
 
     public function user()
     {

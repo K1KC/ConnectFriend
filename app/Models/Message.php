@@ -9,6 +9,9 @@ class Message extends Model
 {
     use HasFactory;
 
+    protected $table = 'messages';
+    protected $guarded = [''];
+
     public function sender()
     {
         return $this->belongsTo(User::class, 'sender_id');

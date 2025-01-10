@@ -9,7 +9,8 @@ class FieldOfWork extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'fields_of_work';
+    protected $guarded = [''];
 
     public function user()
     {

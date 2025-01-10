@@ -9,7 +9,8 @@ class Friend extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'friends';
+    protected $guarded = [''];
 
     public function user()
     {
