@@ -5,6 +5,7 @@ return [
         'Home' => 'Beranda',
         'Profile' => 'Profil',
         'Notification' => 'Notifikasi',
+        'Search User' => 'Cari Pengguna',
         'Message' => 'Pesan',
         'Logout' => 'Keluar',
     
@@ -37,6 +38,16 @@ return [
         // Home
         'Find New Friends' => 'Cari Teman Baru',
         'Friends Update' => 'Friends Update',
-        'Friendlist' => 'Friendlist',
+        'Friendlist' => 'Daftar Teman',
+
+        // Profile
+        'LinkedIn' => 'LinkedIn',
+        'Coins Balance' => 'Jumlah Koin',
+
+        // Notifications
+        'Mark All as Read' => 'Tandai semua telah dibaca',
+        'New Message' => 'Pesan Baru',
+        'messageBody' => 'Kamu dapat pesan baru dari',
+        'requestBody' => 'Kamu dapat ajakan berteman dari'
 ];
 ?>

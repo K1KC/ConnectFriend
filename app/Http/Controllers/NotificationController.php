@@ -10,8 +10,15 @@ class NotificationController extends Controller
 {
     public function getAllNotifications() {
         $currentUserId = auth()->user()->id;
-        $notifications = Notification::where('user_id', $currentUserId)->with('sender')->orderBy('created_at', 'ASC')->get();
+        $notifications = Notification::where('user_id', $currentUserId)->with('sender')->orderBy('sent_at', 'DESC')->get();
 
-        return view('notification', compact('notifications'));
+        // $senders = $notifications->map(function ($notification) {
+        //     return [
+        //         'id' => $notification->sender->id,
+        //         'name' => $notification->sender->name
+        //     ];
+        // });
+        
+        return view('notification', compact('notifications', /*'senders'*/));
     }
 }

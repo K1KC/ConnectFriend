@@ -14,7 +14,7 @@ class Notification extends Model
 
     public function recipient()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'receiver_id');
     }
 
     public function sender()

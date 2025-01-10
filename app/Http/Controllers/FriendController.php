@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Friend;
+use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -31,6 +33,14 @@ class FriendController extends Controller
                 'user_id' => $userId,
                 'friend_id' => $friendId,
             ]);
+
+            Notification::create([
+                'sender_id' => $userId,
+                'type' => 'friend_request',
+                'user_id' => $friendId,
+                'message' => 'None',
+                'status' => 'unread'
+            ]);
             return redirect()->back()->with('message', __('messages.thumbsup.added'));
         }
     }
@@ -43,8 +53,9 @@ class FriendController extends Controller
         })->where('status', 'accepted')->get(['user_id', 'friend_id'])->map(function ($friendship) use ($currentUserId)
         {
             return $friendship->user_id === $currentUserId ? $friendship->friend_id : $friendship->user_id;
-        });
+        })->toArray();
 
-        return view('friendlist', compact('friendIds'));
+        $friends = User::whereIn('id', $friendIds)->get();
+        return view('friendlist', compact('friends'));
     }
 }

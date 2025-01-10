@@ -42,7 +42,12 @@ return [
     // Profile
     'LinkedIn' => 'LinkedIn',
     'Coins Balance' => 'Coins Balance',
-    'Edit Profile' => 'Edit Profile',
+
+    // Notifications
+    'Mark All as Read' => 'Mark All as Read',
+    'New Message' => 'New message',
+    'messageBody' => 'You got a new message from',
+    'requestBody' => 'You got a friend request from'
 
 ];
 ?>
