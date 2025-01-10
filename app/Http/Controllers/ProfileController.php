@@ -14,6 +14,12 @@ class ProfileController extends Controller
         return view('profile', compact('user'));
     }
 
-    
+    public function topup() 
+    {
+        $user = auth()->user();
+        $user->coins_balance += 100;
+        $user->save();
+        return redirect()->back();
+    }
 
 }

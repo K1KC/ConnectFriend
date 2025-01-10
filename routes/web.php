@@ -12,12 +12,14 @@ Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
 Route::get('/test', [RegisterController::class, 'testCreateUser']);
 Route::middleware(['auth'])->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/cont-register', [RegisterController::class, 'continueRegister'])->name('cont.register');
     Route::post('/edit-thumbs-up', [FriendController::class, 'thumbsup'])->name('edit.thumbsup');
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
     Route::get('/search', function() {
         return view('search');
     })->name('search.page');
     Route::get('/friendlist', [FriendController::class, 'getAllFriends'])->name('friendlist');
+    Route::post('/topup', [ProfileController::class, 'topup'])->name('coin.topup');
 });
 
 

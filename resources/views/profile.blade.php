@@ -34,15 +34,17 @@
                             
                             <p><strong>{{ __('messages.Mobile Number') }}:</strong> {{ $user->mobile }}</p>
                             
-                            <p><strong>{{ __('messages.Coins Balance') }}:</strong> {{ $user->coins_balance }} Coins</p>
+                            <p><strong>{{ __('messages.Coins Balance') }}:</strong> {{ $user->coins_balance }} {{__('messages.Coins') }}</p>
                         </div>
                     </div>
                     
                     <div class="row mt-3">
-                        <!-- Button to Edit Profile (if required) -->
-                        <div class="col text-end">
-                            {{-- <a href="{{ route('profile.edit') }}" class="btn btn-primary">{{ __('messages.Edit Profile') }}</a> --}}
-                        </div>
+                        <form action="{{ route('coin.topup')}}" method="POST">
+                            @csrf
+                            <div class="col text-end">
+                                <button type="submit" class="btn btn-primary">{{ __('messages.Top Up 100 Coins') }}</button> 
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -42,12 +42,18 @@ return [
 
         // Profile
         'LinkedIn' => 'LinkedIn',
+        'Coins' => 'Koin',
         'Coins Balance' => 'Jumlah Koin',
+        'Top Up 100 Coins' => 'Beli 100 koin',
 
         // Notifications
         'Mark All as Read' => 'Tandai semua telah dibaca',
         'New Message' => 'Pesan Baru',
         'messageBody' => 'Kamu dapat pesan baru dari',
-        'requestBody' => 'Kamu dapat ajakan berteman dari'
+        'requestBody' => 'Kamu dapat ajakan berteman dari',
+
+        // Search User
+        'Search Users' => 'Cari Pengguna',
+        
 ];
 ?>

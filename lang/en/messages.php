@@ -34,6 +34,10 @@ return [
     'toLogin' => 'Already have an account?',
     'LoginHere' => 'Login Here',
 
+    // Registration Payment
+    'Registration Payment' => 'Registration Payment',
+    'Must be equal to the price' => 'Must be equal to the price',
+    'Pay' => 'Pay',
     // Home
     'Find New Friends' => 'Find New Friends',
     'Friends Update' => 'Friends Update',
@@ -41,13 +45,17 @@ return [
     
     // Profile
     'LinkedIn' => 'LinkedIn',
+    'Coins' => 'Coins',
     'Coins Balance' => 'Coins Balance',
+    'Top Up 100 Coins' => 'Top-up 100 coins',
 
     // Notifications
     'Mark All as Read' => 'Mark All as Read',
     'New Message' => 'New message',
     'messageBody' => 'You got a new message from',
-    'requestBody' => 'You got a friend request from'
+    'requestBody' => 'You got a friend request from',
 
+    // Search Users
+    'Search Users' => 'Search Users',
 ];
 ?>
